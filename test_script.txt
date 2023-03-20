@@ -1,0 +1,39 @@
+//code modified from: https://maker.pro/arduino/projects/how-to-build-a-rubber-ducky-usb-with-arduino-using-a-digispark-module
+
+#include "DigiKeyboard.h"
+
+void setup() {
+  pinMode(1, OUTPUT);
+  //to avoid conflicts, cancel the effect of all keys pressed at time of execution
+  DigiKeyboard.sendKeyStroke(0);
+  DigiKeyboard.delay(500);
+  //open run (r + windows key)
+  DigiKeyboard.sendKeyStroke(KEY_R, MOD_GUI_LEFT);
+  DigiKeyboard.delay(500);
+  //runs command in command prompt so the directory is changed to the desktop
+  DigiKeyboard.print("cmd /k cd %UserProfile%/Desktop");
+  DigiKeyboard.sendKeyStroke(KEY_ENTER);
+  DigiKeyboard.delay(500);
+  //output the text to a txt file
+  DigiKeyboard.print("echo Hey, it worked! > QuickTest.txt");
+  //run the command
+  DigiKeyboard.sendKeyStroke(KEY_ENTER);
+  DigiKeyboard.delay(500);
+  //exit command prompt
+  DigiKeyboard.print("exit");
+  DigiKeyboard.sendKeyStroke(KEY_ENTER);
+  DigiKeyboard.delay(500);
+}
+
+void loop() {
+  // When scripts are done, blink LED
+
+  digitalWrite(1, HIGH);
+  delay(200);
+
+  digitalWrite(1, LOW);
+  delay(300);
+}
+
+
+

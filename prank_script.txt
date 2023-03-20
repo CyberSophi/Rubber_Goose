@@ -1,0 +1,36 @@
+//modified from: https://github.com/CedArctic/DigiSpark-Scripts/blob/master/RickRoll_Update/RickRoll_Update.ino
+
+#include "DigiKeyboard.h" 
+void setup() { 
+  pinMode(1, OUTPUT);
+
+  DigiKeyboard.delay(2000); 
+  DigiKeyboard.sendKeyStroke(0); 
+  //open run (r + windows key) 
+  DigiKeyboard.sendKeyStroke(KEY_R, MOD_GUI_LEFT); 
+  DigiKeyboard.delay(600); 
+  //type in the link to the youtube video 
+  //stores the string in program memory 
+  DigiKeyboard.print(F("https://youtu.be/dQw4w9WgXcQ?t=43s")); 
+  DigiKeyboard.sendKeyStroke(KEY_ENTER); 
+  DigiKeyboard.delay(5000); 
+  DigiKeyboard.sendKeyStroke(KEY_SPACE); 
+  DigiKeyboard.delay(200); 
+  DigiKeyboard.sendKeyStroke(KEY_R, MOD_GUI_LEFT); 
+  DigiKeyboard.delay(3000);
+
+  //go to the fake windows update page (if the user doesn’t use windows 10, this should be changed) 
+  DigiKeyboard.print(F("https://updatefaker.com/windows10/index.html")); 
+  DigiKeyboard.sendKeyStroke(KEY_ENTER); 
+  DigiKeyboard.delay(2000); 
+  //fullscreen 
+  DigiKeyboard.sendKeyStroke(KEY_F11); 
+} 
+
+void loop() { 
+  digitalWrite(1, HIGH);
+  delay(200);
+
+  digitalWrite(1, LOW);
+  delay(300);
+}

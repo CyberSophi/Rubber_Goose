@@ -1,0 +1,92 @@
+//modified from ducktoolkit.com, script called “Matrix V2” by Author “Harvey”.
+
+#include "DigiKeyboard.h" 
+
+#define atsym 52 //define @ 
+#define backslash 100 //define \ 
+
+void setup() { 
+  pinMode(1, OUTPUT);
+
+  DigiKeyboard.sendKeyStroke(0); 
+  DigiKeyboard.delay(500); 
+  //open run 
+  DigiKeyboard.sendKeyStroke(KEY_R, MOD_GUI_LEFT); 
+  DigiKeyboard.delay(500); 
+  //open notepad 
+  DigiKeyboard.print(F("notepad")); 
+  DigiKeyboard.sendKeyStroke(KEY_ENTER); 
+  DigiKeyboard.delay(500); 
+  //type @ symbol 
+  DigiKeyboard.sendKeyStroke(atsym, MOD_SHIFT_LEFT); 
+  //turn off command echoing 
+  DigiKeyboard.print(F("echo off")); 
+  DigiKeyboard.sendKeyStroke(KEY_ENTER); 
+  DigiKeyboard.sendKeyStroke(KEY_ENTER); 
+  DigiKeyboard.delay(500); 
+  //change text colour to green 
+  DigiKeyboard.print(F("color 02 ")); 
+  DigiKeyboard.sendKeyStroke(KEY_ENTER); 
+  DigiKeyboard.sendKeyStroke(KEY_ENTER); 
+  DigiKeyboard.delay(500); 
+  //change window size 
+  DigiKeyboard.print(F("mode 1000")); 
+  DigiKeyboard.sendKeyStroke(KEY_ENTER); 
+  DigiKeyboard.sendKeyStroke(KEY_ENTER); 
+  DigiKeyboard.delay(500); 
+  //create subroutine 
+  DigiKeyboard.print(F(":looped")); 
+  DigiKeyboard.sendKeyStroke(KEY_ENTER); 
+  DigiKeyboard.sendKeyStroke(KEY_ENTER); 
+  DigiKeyboard.delay(500); 
+  //%random% generates a random integer from 0 to 32767 
+  DigiKeyboard.print(F("echo %random%%random%%random%%random%%random%%random%%random%%random%%random%%random%%random%%random%%random%%random%%random%%random%%random%%random%%random%%random%%random%%random%%random%%random%%random%%random%%random%%random%%random%%random%%random%%random%%random%%random%%random%%random%%random%%random%%random%%random%%random%%random%%random%%random%%random%%random%%random%%random%%random%%random%%random%%random%%random%%random%%random%%random%%random%%random%%random%%random%%random%%random%%random%%random%%random%%random%%random%%random%%random%%random%%random%%random%%random%%random%%random%%random%%random%%random%%random%%random%%random%%random%%random%%random%%random%%random%%random%%random%")); 
+  DigiKeyboard.sendKeyStroke(KEY_ENTER); 
+  DigiKeyboard.delay(2000); 
+  DigiKeyboard.sendKeyStroke(KEY_ENTER); 
+  DigiKeyboard.delay(500); 
+  //goto the subroutine 
+  DigiKeyboard.print(F("goto looped")); 
+  DigiKeyboard.sendKeyStroke(KEY_ENTER); 
+  DigiKeyboard.delay(750); 
+  //save file 
+  DigiKeyboard.sendKeyStroke(KEY_S, MOD_CONTROL_LEFT); 
+  DigiKeyboard.delay(500); 
+  //save to the user’s desktop as “matrix.bat” 
+  DigiKeyboard.print(F("%UserProfile%")); 
+  DigiKeyboard.sendKeyStroke(backslash); 
+  DigiKeyboard.print(F("Desktop")); 
+  DigiKeyboard.sendKeyStroke(backslash); 
+  DigiKeyboard.print(F("matrix.bat")); 
+  DigiKeyboard.sendKeyStroke(KEY_ENTER); 
+  DigiKeyboard.delay(500); 
+  //open run 
+  DigiKeyboard.sendKeyStroke(KEY_R, MOD_GUI_LEFT); 
+  DigiKeyboard.delay(500); 
+  //open command prompt 
+  DigiKeyboard.print(F("cmd")); 
+  DigiKeyboard.delay(500); 
+  DigiKeyboard.sendKeyStroke(KEY_ENTER); 
+  DigiKeyboard.delay(500); 
+  //run matrix.bat 
+  DigiKeyboard.print(F("%UserProfile%"));
+  DigiKeyboard.delay(500); 
+  DigiKeyboard.sendKeyStroke(backslash);  
+  DigiKeyboard.print(F("Desktop")); 
+  DigiKeyboard.delay(500);
+  DigiKeyboard.sendKeyStroke(backslash); 
+  DigiKeyboard.print(F("matrix.bat")); 
+  DigiKeyboard.delay(500);
+  DigiKeyboard.sendKeyStroke(KEY_ENTER); 
+  //fullscreen 
+  DigiKeyboard.sendKeyStroke(KEY_ENTER, MOD_ALT_LEFT); 
+} 
+
+void loop() { 
+  digitalWrite(1, HIGH);
+  delay(200);
+
+  digitalWrite(1, LOW);
+  delay(300);
+}
+
